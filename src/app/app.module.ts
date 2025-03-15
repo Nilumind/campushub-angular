@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,12 +9,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatOption, MatSelectModule } from '@angular/material/select';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+// import MatTimepickerModule if it exists
+// import { MatTimepickerModule } from '@angular/material/timepicker';
+import {MatTimepickerModule} from '@angular/material/timepicker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardLayoutComponent } from './layout/dashboard-layout/dashboard-layout.component';
 import { ProfileComponent } from './layout/profile/profile.component';
 import { SettingsComponent } from './layout/settings/settings.component';
 import { LoginComponent } from './login/login.component';
+import { SheduleComponent } from './layout/shedule-admin/shedule/shedule.component';
+import { ShedulePopUpComponent } from './layout/shedule-admin/shedule-pop-up/shedule-pop-up.component';
+import { MatTableModule } from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import this module
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -24,7 +36,9 @@ import { LoginComponent } from './login/login.component';
     DashboardLayoutComponent,
     ProfileComponent,
     SettingsComponent,
-    LoginComponent
+    LoginComponent,
+    SheduleComponent,
+    ShedulePopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -35,10 +49,26 @@ import { LoginComponent } from './login/login.component';
     MatButtonModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatOption,
+    MatNativeDateModule,
+    // MatTimepickerModule, // Uncomment this line if MatTimepickerModule exists
     HttpClientModule,
+    MatTimepickerModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    MatTableModule,
+    MatDialogModule,
+    BrowserModule, 
+    BrowserAnimationsModule,
+    MatSelectModule, 
+    MatOption // Add this import
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+   
 })
 export class AppModule { }
