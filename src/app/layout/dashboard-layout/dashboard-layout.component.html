@@ -1,16 +1,15 @@
-<!-- dashboard.component.html -->
+<!-- dashboard-layout.component.html -->
 <div class="flex h-screen bg-gray-100">
   <!-- Sidebar -->
   <aside class="w-64 bg-white shadow-md flex flex-col">
-    <div class="p-4 text-xl font-bold border-b">SCMS Dashboard</div>
+    <div class="text-xl font-bold border-b" style="padding: 9.8px;"> <img src="images/Campushub (4).png" alt="SCMS Logo" class="w-auto inline-block mr-4" /></div>
     <nav class="flex-1 p-4">
       <ul class="space-y-2">
-        <li class="p-2 rounded hover:bg-gray-200 cursor-pointer">🏠 Dashboard</li>
-        <li class="p-2 rounded hover:bg-gray-200 cursor-pointer">📅 Schedule</li>
-        <li class="p-2 rounded hover:bg-gray-200 cursor-pointer">🎤 Events</li>
-        <li class="p-2 rounded hover:bg-gray-200 cursor-pointer">🏫 Resources</li>
-        <li class="p-2 rounded hover:bg-gray-200 cursor-pointer">✉️ Messages</li>
-        <li class="p-2 rounded hover:bg-gray-200 cursor-pointer">📊 Reports</li>
+        <li class="p-2 rounded hover:bg-gray-200 cursor-pointer" [routerLink]="'/dashboard'">🏠 Dashboard</li>
+        <li class="p-2 rounded hover:bg-gray-200 cursor-pointer" [routerLink]="'/shedule'">📅 Schedule</li>
+        <li class="p-2 rounded hover:bg-gray-200 cursor-pointer" [routerLink]="'/reservations'">🏫 Reservations</li> 
+        <li class="p-2 rounded hover:bg-gray-200 cursor-pointer" [routerLink]="'/profile'">👤 Profile</li>
+        <li class="p-2 rounded hover:bg-gray-200 cursor-pointer" [routerLink]="'/settings'">⚙️ Settings</li>
       </ul>
     </nav>
   </aside>
@@ -27,12 +26,8 @@
     </header>
 
     <!-- Dashboard Content -->
-    <main class="p-6">
-      <div class="grid grid-cols-3 gap-4">
-        <div class="bg-white p-6 rounded shadow-md">📅 Upcoming Schedule</div>
-        <div class="bg-white p-6 rounded shadow-md">🏫 Resource Bookings</div>
-        <div class="bg-white p-6 rounded shadow-md">✉️ Recent Messages</div>
-      </div>
+    <main class="p-6 flex-1">
+      <router-outlet></router-outlet> <!-- Child components like Schedule will be displayed here -->
     </main>
   </div>
 </div>

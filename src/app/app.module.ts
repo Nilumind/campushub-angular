@@ -28,6 +28,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import this module
 import { MatNativeDateModule } from '@angular/material/core';
+import { AdminCheckReservationsComponent } from './layout/admin-check-reservations/admin-check-reservations.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     SettingsComponent,
     LoginComponent,
     SheduleComponent,
-    ShedulePopUpComponent
+    ShedulePopUpComponent,
+    AdminCheckReservationsComponent
   ],
   imports: [
     BrowserModule,
