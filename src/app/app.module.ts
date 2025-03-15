@@ -12,11 +12,19 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatOption, MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardLayoutComponent } from './layout/dashboard-layout/dashboard-layout.component';
+import { ProfileComponent } from './layout/profile/profile.component';
+import { SettingsComponent } from './layout/settings/settings.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardLayoutComponent,
+    ProfileComponent,
+    SettingsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

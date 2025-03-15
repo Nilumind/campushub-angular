@@ -1,0 +1,54 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold text-center text-gray-800">Login</h2>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-4">
+        
+        <!-- Email Input -->
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input id="email" type="email" formControlName="email"
+            class="mt-1 w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring focus:ring-blue-300"
+            [ngClass]="{'border-red-500': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}" />
+          <p *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
+            Please enter a valid email.
+          </p>
+        </div>
+  
+        <!-- Password Input -->
+        <div class="mb-4">
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <div class="relative">
+            <input id="password" type="password" formControlName="password"
+              class="mt-1 w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring focus:ring-blue-300"
+              [ngClass]="{'border-red-500': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}" />
+          </div>
+          <p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
+            Password is required.
+          </p>
+        </div>
+  
+        <!-- Error Message -->
+        <p *ngIf="errorMessage" class="text-red-600 text-sm text-center mb-2">{{ errorMessage }}</p>
+  
+        <!-- Login Button -->
+        <button type="submit" [disabled]="loading" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+          <span *ngIf="!loading">Login</span>
+          <span *ngIf="loading" class="flex justify-center">
+            <svg class="animate-spin h-5 w-5 mr-3 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0"></path>
+            </svg>
+            Logging in...
+          </span>
+        </button>
+  
+        <!-- Forgot Password / Register -->
+        <div class="mt-4 text-center">
+          <a href="#" class="text-sm text-blue-600 hover:underline">Forgot password?</a>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

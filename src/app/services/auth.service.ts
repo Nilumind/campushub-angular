@@ -13,6 +13,7 @@ export class AuthService {
 
     // Register User
     register(userData: any): Observable<any> {
+      console.log(userData)
       return this.http.post(`${this.apiUrl}/register`, userData);
     }
   
@@ -24,5 +25,9 @@ export class AuthService {
     // Verify Email (Optional)
     verifyEmail(token: string): Observable<any> {
       return this.http.get(`${this.apiUrl}/verify-email`, { params: { token } });
+    }
+
+    login(credentials: any): Observable<any> {
+      return this.http.post(`${this.apiUrl}/login`, credentials);
     }
 }
