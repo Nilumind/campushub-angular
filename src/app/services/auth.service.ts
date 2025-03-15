@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   private apiUrl = 'http://localhost:5000/api/users';
+  private userSubject = new BehaviorSubject<any>(null);
+  user$ = this.userSubject.asObservable(); // Observable for other components
+
 
   constructor(private http: HttpClient) { }
 
@@ -27,7 +30,26 @@ export class AuthService {
       return this.http.get(`${this.apiUrl}/verify-email`, { params: { token } });
     }
 
-    login(credentials: any): Observable<any> {
-      return this.http.post(`${this.apiUrl}/login`, credentials);
+    // login(credentials: any): Observable<any> {
+    //   return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
+    //     tap(response => {
+    //       this.userSubject.next(response.user); // Store user data
+    //       localStorage.setItem('user', JSON.stringify(response.user)); // Optional: Persist user data
+    //     })
+    //   );;
+    // }
+
+    login(credentials: { email: string; password: string }): Observable<any> {
+      return this.http.post<any>('YOUR_LOGIN_API_ENDPOINT', credentials).pipe(
+        tap(response => {
+          this.userSubject.next(response.user); // Store user data
+          localStorage.setItem('user', JSON.stringify(response.user)); // Optional: Persist user data
+        })
+      );
     }
+
+    getUser(): Observable<any> {
+      return this.user$;
+    }
+    
 }

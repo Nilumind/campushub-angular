@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard-layout.component.scss'
 })
 export class DashboardLayoutComponent {
+
+ constructor(private authService: AuthService,){
+  
+    this.authService.getUser().subscribe(user => {
+      this.user = user;
+    });
+ }
+
+
 toggleTemplates() {
 throw new Error('Method not implemented.');
 }
