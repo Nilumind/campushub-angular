@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ShedulePopUpComponent } from '../shedule-pop-up/shedule-pop-up.component';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 // import { EventFormComponent } from '../event-form/event-form.component';
 
 @Component({
@@ -11,6 +12,9 @@ import { ShedulePopUpComponent } from '../shedule-pop-up/shedule-pop-up.componen
   styleUrl: './shedule.component.scss'
 })
 export class SheduleComponent implements OnInit{
+onDateChange($event: MatDatepickerInputEvent<any,any>) {
+throw new Error('Method not implemented.');
+}
    
   eventsData: any[] = [];
   displayedColumns: string[] = ['eventName', 'eventType', 'eventDate', 'place', 'action'];

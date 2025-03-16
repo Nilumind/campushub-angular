@@ -1,0 +1,43 @@
+.event-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  /* Top Bar: Button + Date Picker */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .date-picker {
+    width: 250px;
+  }
+  
+  /* Event List Styling */
+  .event-list-card {
+    padding: 16px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 12px;
+  }
+  
+  button mat-icon {
+    font-size: 20px;
+  }
+  
