@@ -1,1 +1,108 @@
-<p>settings works!</p>
+<div class="settings-container">
+    <h1 class="settings-title">Account Settings</h1>
+  
+    <!-- Horizontal Scrolling Container -->
+    <div class="horizontal-scroll-container">
+      <!-- General Settings Section -->
+      <div class="settings-section">
+        <h2 class="section-title">General Settings</h2>
+        <form (ngSubmit)="onSaveSettings()">
+          <div class="form-group">
+            <label for="username" class="label">Username</label>
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              [(ngModel)]="settings.username" 
+              placeholder="Enter your username" 
+              required
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="email" class="label">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              [(ngModel)]="settings.email" 
+              placeholder="Enter your email" 
+              required
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="phone" class="label">Phone Number</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              [(ngModel)]="settings.phone" 
+              placeholder="Enter your phone number" 
+              required
+            />
+          </div>
+        </form>
+      </div>
+  
+      <!-- Profile Image Section -->
+      <div class="settings-section">
+        <h2 class="section-title">Profile Settings</h2>
+        <form (ngSubmit)="onSaveSettings()">
+          <div class="form-group">
+            <label for="profileImage" class="label">Profile Image</label>
+            <div class="profile-image-container">
+              <label class="image-upload-btn" for="profileImage">
+                <span >Select Image</span>
+              </label>
+              <input 
+                type="file" 
+                id="profileImage" 
+                name="profileImage" 
+                (change)="onImageChange($event)" 
+                accept="image/*" 
+                class="profile-image-input"
+              />
+              <div *ngIf="settings.profileImage" class="profile-image-preview-container">
+                <img [src]="settings.profileImage" alt="Profile Image" class="profile-image-preview" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Privacy Settings Section -->
+      <div class="settings-section">
+        <h2 class="section-title">Privacy Settings</h2>
+        <form (ngSubmit)="onSaveSettings()">
+          <div class="form-group">
+            <label for="notifications" class="label">Enable Notifications</label>
+            <input 
+              type="checkbox" 
+              id="notifications" 
+              name="notifications" 
+              [(ngModel)]="settings.notifications"
+              class="checkbox-align"
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="data-sharing" class="label">Allow Data Sharing</label>
+            <input 
+              type="checkbox" 
+              id="data-sharing" 
+              name="data-sharing" 
+              [(ngModel)]="settings.dataSharing"
+              class="checkbox-align"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Save Changes Button -->
+    <div class="">
+      <button type="submit" class="save-btn" (click)="onSaveSettings()">Save Changes</button>
+    </div>
+  </div>
+  

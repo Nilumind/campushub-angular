@@ -1,1 +1,46 @@
-<p>profile works!</p>
+<div class="profile-container">
+  <h1 class="profile-title">User Profile</h1>
+
+  <!-- Profile Image Section -->
+  <div class="profile-image-container">
+    <img [src]="userProfile?.profilePicture" alt="Profile Picture" class="profile-image"/>
+  </div>
+
+  <!-- Profile Sections Container -->
+  <div class="profile-sections-container">
+    <!-- General Information Section -->
+    <div class="profile-section">
+      <h2 class="section-title">General Information</h2>
+      <div class="profile-detail-item">
+        <label for="username" class="label">Username</label>
+        <span>{{ userProfile?.name }}</span>
+      </div>
+      <div class="profile-detail-item">
+        <label for="email" class="label">Email</label>
+        <span>{{ userProfile?.email }}</span>
+      </div>
+      <div class="profile-detail-item">
+        <label for="phone" class="label">Phone</label>
+        <span>{{ userProfile?.phone }}</span>
+      </div>
+    </div>
+
+    <!-- Privacy Settings Section -->
+    <div class="profile-section">
+      <h2 class="section-title">Privacy Settings</h2>
+      <div class="profile-detail-item">
+        <label for="notifications" class="label">Enable Notifications</label>
+        <span>{{ userProfile?.notifications ? 'Enabled' : 'Disabled' }}</span>
+      </div>
+      <div class="profile-detail-item">
+        <label for="data-sharing" class="label">Allow Data Sharing</label>
+        <span>{{ userProfile?.dataSharing ? 'Yes' : 'No' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Button Section -->
+  <div class="">
+    <button class="edit-button" (click)="editProfile()">Edit Profile</button>
+  </div>
+</div>

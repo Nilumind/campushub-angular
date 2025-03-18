@@ -1,0 +1,29 @@
+.left-side-container {
+    width: 60%; /* Adjust based on your preference */
+  }
+  
+  .flex-1 {
+    width: 40%; /* Adjust based on your preference */
+  }
+  
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+  }
+  
+  button {
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #4a90e2; /* Lighter shade of blue */
+  }
+  
+  input {
+    transition: all 0.2s ease;
+  }
+  
+  input:focus {
+    border-color: #4a90e2; /* Blue ring on focus */
+  }
+  
