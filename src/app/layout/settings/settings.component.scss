@@ -1,0 +1,134 @@
+
+  .horizontal-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 0;
+    white-space: nowrap;
+    justify-content: flex-start;
+  }
+  
+  .settings-section {
+    min-width: 320px; /* Slightly wider to make each section feel more spacious */
+    flex-shrink: 0;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .settings-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .section-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #1f03f2;
+    padding-bottom: 5px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+  
+  .image-upload-btn {
+    color: white; /* Change text color to white */
+  background-color: #007bff; /* Optional: Add a background color for the button */
+  padding: 8px 15px; /* Optional: Add padding to the button */
+  border-radius: 4px; /* Optional: Round the corners */
+  cursor: pointer; /* Make the button clickable */
+  font-size: 14px; /* Optional: Change font size */
+  text-align: center; /* Optional: Center the text */
+  display: inline-block;
+  }
+  
+  .image-upload-btn:hover {
+    background-color: #0227ad;
+  }
+  
+  .profile-image-preview-container {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .profile-image-preview {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+  }
+  
+  .save-btn {
+    background-color: #1f03f2;
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .save-btn:hover {
+    background-color: #0227ad;
+    transform: translateY(-2px);
+  }
+  
+  .save-btn:active {
+    transform: translateY(0);
+  }
+  
+  .settings-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .horizontal-scroll-container::-webkit-scrollbar {
+    height: 10px;
+  }
+  
+  .horizontal-scroll-container::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 10px;
+  }
+  
+  .horizontal-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+  }
