@@ -29,6 +29,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import this module
 import { MatNativeDateModule } from '@angular/material/core';
 import { AdminCheckReservationsComponent } from './layout/admin-check-reservations/admin-check-reservations.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { AdminCheckReservationsComponent } from './layout/admin-check-reservatio
     BrowserModule, 
     BrowserAnimationsModule,
     MatSelectModule, 
-    MatOption // Add this import
+    MatOption,
+    MatCardModule,
+    MatIconModule// Add this import
   ],
   providers: [],
   bootstrap: [AppComponent],
