@@ -1,72 +1,77 @@
-<mat-dialog-content>
-    <h2>{{ isEditMode ? 'Edit Event' : 'Schedule Event' }}</h2>
-  
-    <form [formGroup]="eventForm">
-      <mat-form-field>
+<mat-dialog-content class="dialog-container">
+  <h2 class="dialog-title">{{ isEditMode ? 'Edit Event' : 'Schedule Event' }}</h2>
+
+  <form [formGroup]="eventForm" class="form-container">
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Event Name</mat-label>
         <input matInput formControlName="eventName" required />
       </mat-form-field>
-  
-      <mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Event Type</mat-label>
         <mat-select formControlName="eventType" required>
           <mat-option *ngFor="let type of eventTypes" [value]="type">{{ type }}</mat-option>
         </mat-select>
       </mat-form-field>
-  
-      <mat-form-field>
-        <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description"></textarea>
-      </mat-form-field>
-  
-      <mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Event Date</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="eventDate" required />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-  
-      <mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Start Time</mat-label>
-        <input matInput [matTimepicker]="timepickerStart" formControlName="startTime" required />
-        <mat-timepicker-toggle matSuffix [for]="timepickerStart"></mat-timepicker-toggle>
-        <mat-timepicker #timepickerStart></mat-timepicker>
+        <input matInput type="time" formControlName="startTime" required />
       </mat-form-field>
-  
-      <mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>End Time</mat-label>
-        <input matInput [matTimepicker]="timepickerEnd" formControlName="endTime" required />
-        <mat-timepicker-toggle matSuffix [for]="timepickerEnd"></mat-timepicker-toggle>
-        <mat-timepicker #timepickerEnd></mat-timepicker>
+        <input matInput type="time" formControlName="endTime" required />
       </mat-form-field>
-  
-      <mat-form-field>
-        <mat-label>Place</mat-label>
-        <mat-select formControlName="place" required>
-          <mat-option *ngFor="let place of places" [value]="place">{{ place }}</mat-option>
-        </mat-select>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Place</mat-label>
+      <mat-select formControlName="place" required>
+        <mat-option *ngFor="let place of places" [value]="place">{{ place }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Equipment Section -->
+    <h3 class="section-title">Equipment</h3>
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Equipment Name</mat-label>
+        <input matInput formControlName="equipmentName" />
       </mat-form-field>
-  
-      <div class="equipment-section">
-        <h3>Equipment</h3>
-        <mat-form-field>
-          <mat-label>Equipment Name</mat-label>
-          <input matInput formControlName="equipmentName" />
-        </mat-form-field>
-  
-        <mat-form-field>
-          <mat-label>Quantity</mat-label>
-          <input matInput formControlName="equipmentQuantity" type="number" />
-        </mat-form-field>
-  
-        <button mat-raised-button (click)="addEquipment()">Add Equipment</button>
-  
-        <div *ngFor="let equipment of equipmentList">
-          <p>{{ equipment.name }} - Quantity: {{ equipment.quantity }}</p>
-        </div>
-      </div>
-  
-      <button mat-raised-button type="submit" color="primary">{{ isEditMode ? 'Update' : 'Schedule' }}</button>
-    </form>
-  </mat-dialog-content>
-  
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Quantity</mat-label>
+        <input matInput formControlName="equipmentQuantity" type="number" />
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="accent" class="add-button" (click)="addEquipment()">Add Equipment</button>
+
+    <div *ngFor="let equipment of equipmentList" class="equipment-list">
+      <p>{{ equipment.name }} - Quantity: {{ equipment.quantity }}</p>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="button-container">
+      <button mat-raised-button type="submit" color="primary">
+        {{ isEditMode ? 'Update' : 'Schedule' }}
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>

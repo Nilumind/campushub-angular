@@ -31,6 +31,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AdminCheckReservationsComponent } from './layout/admin-check-reservations/admin-check-reservations.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import { DashboardComponent } from './layout/dashboard/dashboard.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import {MatIconModule} from '@angular/material/icon';
     LoginComponent,
     SheduleComponent,
     ShedulePopUpComponent,
-    AdminCheckReservationsComponent
+    AdminCheckReservationsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatSelectModule, 
     MatOption,
     MatCardModule,
-    MatIconModule// Add this import
+    MatIconModule,
+    MatGridListModule// Add this import
   ],
   providers: [],
   bootstrap: [AppComponent],

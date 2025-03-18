@@ -9,10 +9,16 @@ import { AuthService } from '../../services/auth.service';
 })
 export class DashboardLayoutComponent {
 
+  displayProjectDropdown: any;
+  user: any;
+  userRole?: string;
+
  constructor(private authService: AuthService,){
   
     this.authService.getUser().subscribe(user => {
       this.user = user;
+      this.userRole = user.role
+
     });
  }
 
@@ -27,9 +33,7 @@ throw new Error('Method not implemented.');
 roleBaseUIAccess(arg0: any): any {
 throw new Error('Method not implemented.');
 }
-displayProjectDropdown: any;
-projectId: any;
-user: any;
+
 toggleMyProjects() {
 throw new Error('Method not implemented.');
 }

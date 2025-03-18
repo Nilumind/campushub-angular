@@ -10,6 +10,9 @@ import { MatOption, MatSelectModule } from '@angular/material/select';
   styleUrl: './shedule-pop-up.component.scss'
 })
 export class ShedulePopUpComponent implements OnInit {
+removeEquipment(_t127: number) {
+throw new Error('Method not implemented.');
+}
 
   eventForm!: FormGroup;
   eventTypes = ['Conference', 'Workshop', 'Lecture', 'Seminar'];

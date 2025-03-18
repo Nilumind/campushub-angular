@@ -8,6 +8,7 @@ import { ShedulePopUpComponent } from './layout/shedule-admin/shedule-pop-up/she
 import { ProfileComponent } from './layout/profile/profile.component';
 import { SettingsComponent } from './layout/settings/settings.component';
 import { AdminCheckReservationsComponent } from './layout/admin-check-reservations/admin-check-reservations.component';
+import { DashboardComponent } from './layout/dashboard/dashboard.component';
 
 // const routes: Routes = [
 //   { path: 'register', component: RegisterComponent },
@@ -36,8 +37,9 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },  // Redirect root to /dashboard  // Your Dashboard layout itself
       { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
-      { path: 'shedule', component: SheduleComponent },
-      { path: 'reservations', component: AdminCheckReservationsComponent },  // Schedule as a child route
+      { path: 'shedule', component: SheduleComponent }, 
+      { path: 'reservations', component: AdminCheckReservationsComponent },
+      { path: 'dashboard', component: DashboardComponent },  // Schedule as a child route
     ]
   },
   { path: '**', redirectTo: 'dashboard' }
