@@ -1,0 +1,61 @@
+<!-- Chat & Notification Button -->
+<button (click)="openChatPopup()" 
+  class="fixed bottom-5 right-5 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg text-lg font-semibold transition hover:bg-blue-700">
+  💬 Chat and Send Notifications
+</button>
+
+<!-- Chat Popup (Hidden Initially) -->
+<div *ngIf="isChatOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white w-[450px] h-[500px] rounded-lg shadow-lg flex flex-col">
+    
+    <!-- Header -->
+    <div class="bg-blue-600 text-white p-3 text-lg font-semibold flex justify-between">
+      <span>Admin Chat</span>
+      <button (click)="closeChatPopup()" class="text-white text-xl">&times;</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex border-b">
+      <button (click)="activeTab = 'chat'"
+        class="flex-1 py-2 text-center transition"
+        [class.bg-blue-600]="activeTab === 'chat'"
+        [class.text-white]="activeTab === 'chat'"
+        [class.bg-gray-200]="activeTab !== 'chat'">
+        Chat
+      </button>
+      <button (click)="activeTab = 'notifications'"
+        class="flex-1 py-2 text-center transition"
+        [class.bg-yellow-500]="activeTab === 'notifications'"
+        [class.text-white]="activeTab === 'notifications'"
+        [class.bg-gray-200]="activeTab !== 'notifications'">
+        Notifications
+      </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 overflow-y-auto p-3">
+      <!-- Chat Messages -->
+      <div *ngIf="activeTab === 'chat'">
+        <div *ngFor="let msg of messages" class="mb-2 p-2 rounded-md"
+          [class.bg-gray-200]="msg.sender !== 'admin'"
+          [class.bg-blue-200]="msg.sender === 'admin'">
+          <strong>{{ msg.sender }}:</strong> {{ msg.text }}
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div *ngIf="activeTab === 'notifications'">
+        <div *ngFor="let note of notifications" class="mb-2 p-2 rounded-md bg-yellow-100 border-l-4 border-yellow-500">
+          🔔 {{ note.text }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Field -->
+    <div class="p-3 border-t flex items-center">
+      <input type="text" [(ngModel)]="newMessage" placeholder="Type a message..."
+        class="flex-1 p-2 border rounded-md outline-none" />
+      <button (click)="sendMessage()" class="ml-2 bg-blue-600 text-white px-4 py-2 rounded-md">Send</button>
+    </div>
+  </div>
+</div>
