@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   private sampleUserData = {
     name: 'John Doe',
     email: 'john.doe@example.com',
-    phone: '123-456-7890',
+    phone: '076 3242528',
     profilePicture: 'https://via.placeholder.com/150',  // Placeholder image URL
     role: 'administrator' // Can be changed to other roles
   };

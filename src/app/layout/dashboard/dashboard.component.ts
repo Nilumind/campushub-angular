@@ -12,7 +12,13 @@ export class DashboardComponent {
 
   isChatOpen = false;
   activeTab: 'chat' | 'notifications' = 'chat';
-  messages: any[] = [];
+  messages = [
+    { sender: 'admin', text: 'Hello! How can I assist you?' },
+    { sender: 'Kasun', text: 'I have a question about a event.' },
+    { sender: 'admin', text: 'Sure! What’s your event name?' },
+    { sender: 'Nimal', text: 'It’s the sangeethe music festival' },
+    { sender: 'admin', text: 'Let me check... Please hold on.' }
+  ];
   notifications: any[] = [];
   newMessage = '';
 
@@ -27,7 +33,6 @@ export class DashboardComponent {
     //   this.notifications.push(notification);
     // });
   }
-
   openChatPopup() {
     this.isChatOpen = true;
   }

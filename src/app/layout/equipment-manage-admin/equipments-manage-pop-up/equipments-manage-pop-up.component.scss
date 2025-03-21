@@ -1,0 +1,51 @@
+.dialog-container {
+    max-width: 500px;
+    padding: 20px;
+  }
+  
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dialog-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .close-button {
+    color: #555;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .half-width {
+    width: 48%;
+  }
+  
+  .equipment-table {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .empty-state {
+    text-align: center;
+    color: gray;
+    margin-top: 10px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  

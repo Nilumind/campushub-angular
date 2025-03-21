@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { MatOption, MatSelectModule } from '@angular/material/select';
 
 @Component({
@@ -10,49 +10,42 @@ import { MatOption, MatSelectModule } from '@angular/material/select';
   styleUrl: './shedule-pop-up.component.scss'
 })
 export class ShedulePopUpComponent implements OnInit {
-removeEquipment(_t127: number) {
-throw new Error('Method not implemented.');
-}
+  eventForm: FormGroup;
+  eventTypes: string[] = ['Meeting', 'Workshop', 'Seminar', 'Conference'];
+  timeSlots : string[] = ['9.00A.M - 11.00A.M','11.00A.M - 1.00P.M','1.00P.M - 3.00P.M','3.00A.M - 5.00P.M']
+  places: string[] = ['Lecture Hall 1', 'Lecture Hall 2', 'Lecture Hall 3', 'Lecture Hall 4', 'Lecture Hall 6','Auditorium 1', 'Auditorium 2' ];
 
-  eventForm!: FormGroup;
-  eventTypes = ['Conference', 'Workshop', 'Lecture', 'Seminar'];
-  places = ['Auditorium', 'Classroom 101', 'Library', 'Gym'];
-  equipmentList: { name: string; quantity: number }[] = [];
-  isEditMode = false;
-
-  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.initializeForm();
-  }
-  ngOnInit(): void {
-    if (this.data && this.data.form) {
-      this.eventForm = this.data.form;
-      this.isEditMode = this.data.isEditMode;
-    }
-  }
-
-  initializeForm() {
+  constructor(
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<ShedulePopUpComponent>
+  ) {
     this.eventForm = this.fb.group({
-      eventName: [''],
-      eventType: [''],
+      eventName: ['', Validators.required],
+      eventType: ['', Validators.required],
       description: [''],
-      eventDate: [''],
-      startTime: [''],
-      endTime: [''],
-      place: [''],
+      eventDate: ['', Validators.required],
+      timeSlot: ['', Validators.required],
+      startTime: ['', Validators.required],
+      endTime: ['', Validators.required],
+      place: ['', Validators.required],
       equipmentName: [''],
       equipmentQuantity: ['']
     });
   }
-  addEquipment() {
-    const equipmentName = this.eventForm!.get('equipmentName')?.value ?? '';
-    const equipmentQuantity = this.eventForm!.get('equipmentQuantity')?.value ?? '';
 
-    if (equipmentName && equipmentQuantity) {
-      this.equipmentList.push({ name: equipmentName, quantity: equipmentQuantity });
-      if (this.eventForm) {
-        this.eventForm.patchValue({ equipmentName: '', equipmentQuantity: '' });
-      }
+  ngOnInit(): void {
+    
+  }
+
+  submitForm() {
+    if (this.eventForm.valid) {
+      console.log('Event Scheduled:', this.eventForm.value);
+      this.closeDialog();
     }
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 
 }

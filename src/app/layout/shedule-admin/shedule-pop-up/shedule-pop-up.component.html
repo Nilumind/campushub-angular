@@ -1,76 +1,116 @@
 <mat-dialog-content class="dialog-container">
-  <h2 class="dialog-title">{{ isEditMode ? 'Edit Event' : 'Schedule Event' }}</h2>
+  <div class="dialog-header">
+    <!-- <h2 class="dialog-title">Schedule Event</h2> -->
+    <h2 class="dialog-title">Make reservation for a event</h2>
+    <button mat-icon-button class="close-button" (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
 
-  <form [formGroup]="eventForm" class="form-container">
+  <form [formGroup]="eventForm" (ngSubmit)="submitForm()">
+    <!-- Event Name & Type -->
     <div class="form-row">
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="fill" class="full-width">
         <mat-label>Event Name</mat-label>
         <input matInput formControlName="eventName" required />
+        <mat-error *ngIf="eventForm.controls['eventName'].invalid">
+          Event name is required
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="full-width">
+      <!-- <mat-form-field appearance="fill" class="full-width">
         <mat-label>Event Type</mat-label>
         <mat-select formControlName="eventType" required>
           <mat-option *ngFor="let type of eventTypes" [value]="type">{{ type }}</mat-option>
         </mat-select>
+        <mat-error *ngIf="eventForm.controls['eventType'].invalid">
+          Event type is required
+        </mat-error>
+      </mat-form-field> -->
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Event Type</mat-label>
+        <input matInput formControlName="eventType" required />
+        <mat-error *ngIf="eventForm.controls['eventType'].invalid">
+          Event name is required
+        </mat-error>
       </mat-form-field>
     </div>
 
-    <mat-form-field appearance="outline" class="full-width">
+    <!-- Description -->
+    <mat-form-field appearance="fill" class="full-width">
       <mat-label>Description</mat-label>
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
 
+    <!-- Date & Time -->
     <div class="form-row">
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="fill" class="full-width">
         <mat-label>Event Date</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="eventDate" required />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="eventForm.controls['eventDate'].invalid">
+          Date is required
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Time Slot</mat-label>
+        <mat-select formControlName="timeSlot" required>
+          <mat-option *ngFor="let timeSlot of timeSlots" [value]="timeSlot">{{ timeSlot }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="eventForm.controls['timeSlot'].invalid">
+          Event type is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- <mat-form-field appearance="fill" class="half-width">
         <mat-label>Start Time</mat-label>
         <input matInput type="time" formControlName="startTime" required />
+        <mat-error *ngIf="eventForm.controls['startTime'].invalid">
+          Start time is required
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="fill" class="half-width">
         <mat-label>End Time</mat-label>
         <input matInput type="time" formControlName="endTime" required />
-      </mat-form-field>
+        <mat-error *ngIf="eventForm.controls['endTime'].invalid">
+          End time is required
+        </mat-error>
+      </mat-form-field> -->
     </div>
 
-    <mat-form-field appearance="outline" class="full-width">
+    <!-- Place -->
+    <mat-form-field appearance="fill" class="full-width">
       <mat-label>Place</mat-label>
       <mat-select formControlName="place" required>
         <mat-option *ngFor="let place of places" [value]="place">{{ place }}</mat-option>
       </mat-select>
+      <mat-error *ngIf="eventForm.controls['place'].invalid">
+        Place is required
+      </mat-error>
     </mat-form-field>
 
     <!-- Equipment Section -->
     <h3 class="section-title">Equipment</h3>
     <div class="form-row">
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="fill" class="full-width">
         <mat-label>Equipment Name</mat-label>
         <input matInput formControlName="equipmentName" />
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="fill" class="half-width">
         <mat-label>Quantity</mat-label>
         <input matInput formControlName="equipmentQuantity" type="number" />
       </mat-form-field>
     </div>
 
-    <button mat-raised-button color="accent" class="add-button" (click)="addEquipment()">Add Equipment</button>
-
-    <div *ngFor="let equipment of equipmentList" class="equipment-list">
-      <p>{{ equipment.name }} - Quantity: {{ equipment.quantity }}</p>
-    </div>
-
-    <!-- Submit Button -->
     <div class="button-container">
-      <button mat-raised-button type="submit" color="primary">
-        {{ isEditMode ? 'Update' : 'Schedule' }}
+      <button mat-button color="warn" (click)="closeDialog()">Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="eventForm.invalid">
+        Schedule Event
       </button>
     </div>
   </form>

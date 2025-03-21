@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { environment } from '../../environment/environment';
 
 interface UserResponse {
   message: string,
@@ -21,7 +22,7 @@ interface User {
 export class AuthService {
 
 
-  private apiUrl = 'http://localhost:5000/api/users';
+  private apiUrl = `${environment.api_url}/users`;
   private userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable(); // Observable for other components
 

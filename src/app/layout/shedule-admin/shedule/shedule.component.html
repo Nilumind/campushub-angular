@@ -1,21 +1,73 @@
 <div class="event-dashboard">
   <!-- Top Section: Button & Date Picker -->
   <div class="top-bar">
-    <button mat-raised-button color="primary" (click)="openEventForm()">
+    <!-- <button mat-raised-button color="primary" (click)="openEventForm()">
       <mat-icon>event</mat-icon> Schedule New Event
+    </button> -->
+    <button mat-raised-button color="primary" (click)="openEventForm()">
+      <mat-icon>event</mat-icon> Make a reservation
     </button>
 
-    <mat-form-field appearance="outline" class="date-picker">
+    <!-- <mat-form-field appearance="outline" class="date-picker">
       <mat-label>Filter By Date</mat-label>
       <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)">
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    </mat-form-field> -->
   </div>
 
-  <!-- Events List -->
-  <mat-card class="event-list-card">
+  
+  <!-- <mat-card class="event-list-card">
     <mat-card-title>Upcoming Events</mat-card-title>
+    <mat-card-content>
+      <table mat-table [dataSource]="eventsData" class="mat-elevation-z8 full-width">
+
+        
+        <ng-container matColumnDef="eventName">
+          <th mat-header-cell *matHeaderCellDef>Event Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.eventName }}</td>
+        </ng-container>
+
+        
+        <ng-container matColumnDef="eventType">
+          <th mat-header-cell *matHeaderCellDef>Event Type</th>
+          <td mat-cell *matCellDef="let element">{{ element.eventType }}</td>
+        </ng-container>
+
+        
+        <ng-container matColumnDef="eventDate">
+          <th mat-header-cell *matHeaderCellDef style="padding-left: 48px;">Date & Time</th>
+          <td mat-cell *matCellDef="let element">{{ element.eventDate }}</td>
+        </ng-container>
+
+        
+        <ng-container matColumnDef="place">
+          <th mat-header-cell *matHeaderCellDef>Place</th>
+          <td mat-cell *matCellDef="let element">{{ element.place }}</td>
+        </ng-container>
+
+        
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="accent" (click)="onEditEvent(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="onDeleteEvent(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card> -->
+
+  <mat-card class="event-list-card">
+    <mat-card-title>Reservation status</mat-card-title>
     <mat-card-content>
       <table mat-table [dataSource]="eventsData" class="mat-elevation-z8 full-width">
 
@@ -33,8 +85,8 @@
 
         <!-- Event Date Column -->
         <ng-container matColumnDef="eventDate">
-          <th mat-header-cell *matHeaderCellDef>Date</th>
-          <td mat-cell *matCellDef="let element">{{ element.eventDate | date: 'short' }}</td>
+          <th mat-header-cell *matHeaderCellDef style="padding-left: 48px;">Date & Time</th>
+          <td mat-cell *matCellDef="let element">{{ element.eventDate }}</td>
         </ng-container>
 
         <!-- Place Column -->
@@ -54,6 +106,11 @@
               <mat-icon>delete</mat-icon>
             </button>
           </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef style="padding-left: 55px;">Status</th>
+          <td mat-cell *matCellDef="let element" [ngClass]="getStatusClass(element.status)" style="padding-left: 50px;">{{ element.status }}</td>
         </ng-container>
 
         <!-- Table Rows -->

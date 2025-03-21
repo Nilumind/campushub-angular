@@ -9,6 +9,7 @@ import { ProfileComponent } from './layout/profile/profile.component';
 import { SettingsComponent } from './layout/settings/settings.component';
 import { AdminCheckReservationsComponent } from './layout/admin-check-reservations/admin-check-reservations.component';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
+import { EquipmentsManageComponent } from './layout/equipment-manage-admin/equipments-manage/equipments-manage.component';
 
 // const routes: Routes = [
 //   { path: 'register', component: RegisterComponent },
@@ -39,7 +40,8 @@ const routes: Routes = [
       { path: 'settings', component: SettingsComponent },
       { path: 'shedule', component: SheduleComponent }, 
       { path: 'reservations', component: AdminCheckReservationsComponent },
-      { path: 'dashboard', component: DashboardComponent },  // Schedule as a child route
+      { path: 'dashboard', component: DashboardComponent }, 
+      { path: 'manage-equipment', component: EquipmentsManageComponent }, // Schedule as a child route
     ]
   },
   { path: '**', redirectTo: 'dashboard' }

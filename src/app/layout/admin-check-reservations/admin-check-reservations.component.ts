@@ -9,15 +9,13 @@ import { Component } from '@angular/core';
 export class AdminCheckReservationsComponent {
 
   eventsData: any[] = [];
-  displayedColumns: string[] = ['eventName', 'eventType', 'eventDate','eventStartTime','eventEndTime','place','equipments', 'action'];
-
+  // displayedColumns: string[] = ['eventName', 'eventType', 'dateAndTime','place','equipments', 'action'];
+  displayedColumns: string[] = ['eventName', 'eventType', 'dateAndTime','place','action'];
   reservations = [
     {
       eventName: 'Wedding Ceremony',
       eventType: 'Wedding',
-      date: new Date('2025-03-20'),
-      startTime: new Date('2025-03-20T10:00:00'),
-      endTime: new Date('2025-03-20T14:00:00'),
+      dateAndTime: '',
       place: 'Hall A',
       equipment: ['Projector', 'Sound System'],
       status: 'pending'
@@ -25,9 +23,7 @@ export class AdminCheckReservationsComponent {
     {
       eventName: 'Conference',
       eventType: 'Corporate',
-      date: new Date('2025-03-21'),
-      startTime: new Date('2025-03-21T09:00:00'),
-      endTime: new Date('2025-03-21T12:00:00'),
+      dateAndTime: '',
       place: 'Hall B',
       equipment: ['Microphone', 'Projector'],
       status: 'pending'
@@ -43,28 +39,47 @@ export class AdminCheckReservationsComponent {
   loadReservations() {
     this.eventsData =[
       {
-        eventName: 'Wedding Ceremony',
-        eventType: 'Wedding',
-        date: new Date('2025-03-20'),
-        startTime: new Date('2025-03-20T10:00:00'),
-        endTime: new Date('2025-03-20T14:00:00'),
-        place: 'Hall A',
-        equipment: ['Projector', 'Sound System'],
+        eventName: 'Event 1',
+        eventType: 'Conference',
+        dateAndTime: '3/21/25  9.00A.M - 11.00A.M ',
+        place: 'Auditorium 1',
+        equipments: ['Projector 1', 'Sound System 1'],
         status: 'pending'
       },
       {
-        eventName: 'Conference',
-        eventType: 'Corporate',
-        date: new Date('2025-03-21'),
-        startTime: new Date('2025-03-21T09:00:00'),
-        endTime: new Date('2025-03-21T12:00:00'),
-        place: 'Hall B',
-        equipment: ['Microphone', 'Projector'],
+        eventName: 'Event 2',
+        eventType: 'Workshop',
+        dateAndTime: '3/22/25  9.00A.M - 11.00A.M',
+        place: 'Lecture Hall 2',
+        equipments: ['Microphone 1', 'Projector 1'],
+        status: 'pending'
+      },
+      {
+        eventName: 'Event 3',
+        eventType: 'Music Festival',
+        dateAndTime: '3/23/25  1.00P.M - 3.00P.M',
+        place: 'Auditorium 2',
+        equipments: ['Projector 2', 'Sound System 1'],
+        status: 'pending'
+      },
+      {
+        eventName: 'Event 4',
+        eventType: 'Seminar',
+        dateAndTime: '3/23/25  9.00A.M - 11.00A.M',
+        place: 'Auditorium 1',
+        equipments: ['Microphone 2', 'Projector 1'],
+        status: 'pending'
+      },
+      {
+        eventName: 'Event 5',
+        eventType: 'Lecture',
+        dateAndTime: '3/23/25  1.00P.M - 3.00P.M',
+        place: 'Lecture Hall 2',
+        equipments: ['Microphone 1', 'Projector 1'],
         status: 'pending'
       }
     ];
   }
-
 
   approveReservation(reservation: any): void {
     reservation.status = 'approved';

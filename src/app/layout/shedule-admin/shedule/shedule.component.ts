@@ -17,7 +17,7 @@ throw new Error('Method not implemented.');
 }
    
   eventsData: any[] = [];
-  displayedColumns: string[] = ['eventName', 'eventType', 'eventDate', 'place', 'action'];
+  displayedColumns: string[] = ['eventName', 'eventType', 'eventDate', 'place', 'action', 'status'];
   eventForm: FormGroup | undefined;
   eventTypes = ['Conference', 'Workshop', 'Lecture', 'Seminar'];
   places = ['Auditorium', 'Classroom 101', 'Library', 'Gym'];
@@ -41,6 +41,7 @@ throw new Error('Method not implemented.');
       startTime: [''],
       endTime: [''],
       place: [''],
+      status: [''],
       equipmentName: [''],
       equipmentQuantity: ['']
     });
@@ -48,7 +49,7 @@ throw new Error('Method not implemented.');
 
   openEventForm() {
     const dialogRef = this.dialog.open(ShedulePopUpComponent, {
-      width: '500px',
+      // width: '500px',
       data: { form: this.eventForm, isEditMode: this.isEditMode }
     });
 
@@ -61,12 +62,28 @@ throw new Error('Method not implemented.');
 
   loadEvents() {
     this.eventsData = [
-      { eventName: 'Event 1', eventType: 'Conference', eventDate: new Date('2025-03-20'), place: 'Auditorium' },
-      { eventName: 'Event 2', eventType: 'Workshop', eventDate: new Date('2025-03-21'), place: 'Library' },
-      { eventName: 'Event 3', eventType: 'Lecture', eventDate: new Date('2025-03-22'), place: 'Classroom' }
+      { eventName: 'Event 1', eventType: 'Conference', eventDate: '3/21/25  9.00A.M - 11.00A.M ', place: 'Auditorium 1',status:'pending' },
+      { eventName: 'Event 2', eventType: 'Workshop', eventDate: '3/21/25  11.00A.M - 1.00P.M ', place: 'Lecture Hall 3', status:'approved' },
+      { eventName: 'Event 3', eventType: 'Lecture', eventDate: '3/22/25  9.00A.M - 11.00A.M ', place: 'Lecture Hall 1', status:'approved' },
+      { eventName: 'Event 4', eventType: 'Music Festival', eventDate: '3/22/25  3.00A.M - 5.00P.M ', place: 'Auditorium 2', status:'rejected' },
+      { eventName: 'Event 5', eventType: 'Lecture', eventDate: '3/23/25  9.00A.M - 11.00A.M ', place: 'Lecture Hall 2', status:'rejected' },
+      { eventName: 'Event 6', eventType: 'Seminar', eventDate: '3/23/25  1.00P.M - 3.00P.M ', place: 'Auditorium 2', status:'pending' }
+
     ];
   }
 
+  getStatusClass(status: string): string {
+    switch (status.toLowerCase()) {
+      case 'pending':
+        return 'status-pending';
+      case 'approved':
+        return 'status-approved';
+      case 'rejected':
+        return 'status-rejected';
+      default:
+        return '';
+    }
+  }
   saveEvent(eventData: any) {
     if (this.isEditMode) {
       // Update event logic here if needed

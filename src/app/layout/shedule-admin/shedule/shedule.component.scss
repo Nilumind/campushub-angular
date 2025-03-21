@@ -26,6 +26,22 @@
   .full-width {
     width: 100%;
   }
+
+  .status-pending {
+    color: orange;
+    font-weight: bold;
+  }
+  
+  .status-approved {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .status-rejected {
+    color: red;
+    font-weight: bold;
+  }
+  
   
   table {
     width: 100%;

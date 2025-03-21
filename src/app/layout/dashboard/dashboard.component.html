@@ -33,13 +33,16 @@
     </div>
 
     <!-- Main Content -->
-    <div class="flex-1 overflow-y-auto p-3">
-      <!-- Chat Messages -->
-      <div *ngIf="activeTab === 'chat'">
-        <div *ngFor="let msg of messages" class="mb-2 p-2 rounded-md"
+    <div class="flex-1 overflow-y-auto p-3 space-y-3">
+      <div *ngIf="activeTab === 'chat'" style="padding: 5px;">
+        <div *ngFor="let msg of messages"
+          class="p-2 max-w-[80%] rounded-md" style="margin-bottom: 15px;"
+          [class.bg-blue-500]="msg.sender === 'admin'"
+          [class.text-white]="msg.sender === 'admin'"
+          [class.ml-auto]="msg.sender === 'admin'"
           [class.bg-gray-200]="msg.sender !== 'admin'"
-          [class.bg-blue-200]="msg.sender === 'admin'">
-          <strong>{{ msg.sender }}:</strong> {{ msg.text }}
+          [class.text-black]="msg.sender !== 'admin'">
+          <strong>{{ msg.sender === 'admin' ? 'Admin' : 'Nimal' }}:</strong> {{ msg.text }}
         </div>
       </div>
 

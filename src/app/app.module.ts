@@ -33,6 +33,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { EquipmentsManageComponent } from './layout/equipment-manage-admin/equipments-manage/equipments-manage.component';
+import { EquipmentsManagePopUpComponent } from './layout/equipment-manage-admin/equipments-manage-pop-up/equipments-manage-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     SheduleComponent,
     ShedulePopUpComponent,
     AdminCheckReservationsComponent,
-    DashboardComponent
+    DashboardComponent,
+    EquipmentsManageComponent,
+    EquipmentsManagePopUpComponent
   ],
   imports: [
     BrowserModule,
